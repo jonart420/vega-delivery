@@ -12,7 +12,7 @@ aborted, …) and let customers follow their delivery via a **live tracking link
 |---|---|
 | Back office + API | Next.js 16, PostgreSQL 17, MapLibre (`backend/`) |
 | Routing & navigation | Valhalla (self-hosted, any OSM region up to the whole planet) |
-| Driver apps | iOS (SwiftUI + Ferrostar, `ios/`) and Android (Kotlin + Compose + Ferrostar, `android/`) |
+| Driver apps | iOS (SwiftUI + Ferrostar, `ios/`) and Android basic version (Kotlin + Compose + Ferrostar, `android/`, not yet compiled) |
 | Maps | free OpenStreetMap vector map (OpenFreeMap) **or** Mapbox – selectable via `.env` |
 | Notifications | SMTP e-mail, WhatsApp via Meta Cloud API or Twilio |
 
