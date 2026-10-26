@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
+  <g fill="none" stroke="#2563eb" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M10 22 L40 8 L70 22 L70 58 L40 72 L10 58 Z"/>
+    <path d="M10 22 L40 36 L70 22 M40 36 L40 72"/>
+  </g>
+  <text x="88" y="52" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#2563eb">VEGA</text>
+  <text x="188" y="52" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#64748b">Delivery</text>
+</svg>

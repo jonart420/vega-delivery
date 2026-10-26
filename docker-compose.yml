@@ -1,0 +1,92 @@
+# VEGA Delivery – open-source delivery planning, routing and tracking.
+# Start: cp .env.example .env (or ./scripts/generate-env.sh), then: docker compose up -d
+# Dev mail catcher:  docker compose --profile dev up -d   → http://localhost:8025
+name: vega-delivery
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-vega}
+      POSTGRES_USER: ${POSTGRES_USER:-vega}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      TZ: ${TZ:-Europe/Berlin}
+    volumes:
+      - ${PGDATA_MOUNT:-pgdata}:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${DB_PORT:-5433}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  valhalla:
+    # Routing engine (car/bike/foot, turn-by-turn instructions). Docs: docs/VALHALLA.md
+    image: ghcr.io/valhalla/valhalla-scripted:${VALHALLA_IMAGE_TAG:-latest}
+    restart: unless-stopped
+    init: true
+    environment:
+      TZ: ${TZ:-Europe/Berlin}
+      # OSM extracts (space separated). Only downloaded while no *.pbf exists in the volume;
+      # all *.pbf are built into ONE tile set. Region → country → continent → planet, see docs.
+      tile_urls: ${VALHALLA_TILE_URLS:-https://download.geofabrik.de/europe/germany/hamburg-latest.osm.pbf}
+      server_threads: ${VALHALLA_THREADS:-4}
+      use_tiles_ignore_pbf: "True"
+      force_rebuild: ${VALHALLA_FORCE_REBUILD:-False}
+      build_tar: "True"
+      update_existing_config: "True"
+      build_elevation: "False"
+      build_admins: "True"         # country rules, driving side
+      build_time_zones: "True"
+      build_transit: "False"
+      use_default_speeds_config: "True"
+      serve_tiles: "True"
+    volumes:
+      - ${VALHALLA_MOUNT:-valhalla}:/custom_files
+    ports:
+      - "127.0.0.1:${VALHALLA_PORT:-8002}:8002"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS -m 4 http://localhost:8002/status >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 180m   # first tile build of large regions takes long
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-vega}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-vega}
+      VALHALLA_URL: http://valhalla:8002
+      APP_ENV: ${APP_ENV:-production}
+      TZ: ${TZ:-Europe/Berlin}
+      UPLOAD_DIR: /data/uploads
+      BRANDING_DIR: /app/public/branding
+    volumes:
+      - ${UPLOADS_MOUNT:-uploads}:/data/uploads
+      # Your logo: put logo.svg / logo.png / favicon.png into ./branding (see branding/README.md)
+      - ${BRANDING_MOUNT:-./branding}:/app/public/branding:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      valhalla:
+        condition: service_started
+    ports:
+      - "${BACKEND_BIND:-127.0.0.1}:${BACKEND_PORT:-3100}:3000"
+
+  # Development only: catches all e-mails (SMTP_HOST=mailpit, SMTP_PORT=1025)
+  mailpit:
+    image: axllent/mailpit:${MAILPIT_IMAGE_TAG:-latest}
+    profiles: ["dev"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025"
+      - "127.0.0.1:1025:1025"
+
+volumes:
+  pgdata:
+  valhalla:
+  uploads:
