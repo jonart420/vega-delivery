@@ -133,7 +133,7 @@ async function render(opts: Record<string, unknown>, format: Format): Promise<Bu
 
 export function renderEan13(code: string, format: Format = "png") {
   if (!isValidGtin(code, 13)) throw new Error("invalid EAN-13");
-  return render({ bcid: "ean13", text: code, includetext: true, height: 18, textxalign: "center" }, format);
+  return render({ bcid: "ean13", text: code, includetext: true, height: 18, guardwhitespace: true }, format);
 }
 
 /** EAN-8 composite with the customer name in the CC component. */

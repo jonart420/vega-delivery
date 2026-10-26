@@ -24,10 +24,16 @@ final class NavigationSpeechSynthesizer: NSObject, SpeechSynthesizer, AVSpeechSy
     static var preferredVoice: AVSpeechSynthesisVoice? {
         let lang = language
         let prefix = String(lang.prefix(2))
-        let candidates = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == lang }
-        let fallback = AVSpeechSynthesisVoice.speechVoices().filter { $0.language.hasPrefix(prefix) }
-        return (candidates.isEmpty ? fallback : candidates).max { $0.quality.rawValue < $1.quality.rawValue }
-            ?? AVSpeechSynthesisVoice(language: lang)
+        // Novelty voices (e.g. "Trinoids") are not suitable for instructions
+        let voices = AVSpeechSynthesisVoice.speechVoices().filter { !$0.voiceTraits.contains(.isNoveltyVoice) }
+        let candidates = voices.filter { $0.language == lang }
+        let pool = candidates.isEmpty ? voices.filter { $0.language.hasPrefix(prefix) } : candidates
+        let bestQuality = pool.map(\.quality.rawValue).max()
+        // Among equal quality prefer the system default voice for the language
+        let system = AVSpeechSynthesisVoice(language: lang)
+        return pool.first { $0.quality.rawValue == bestQuality && $0.identifier == system?.identifier }
+            ?? pool.first { $0.quality.rawValue == bestQuality }
+            ?? system
     }
 
     private let voice = NavigationSpeechSynthesizer.preferredVoice

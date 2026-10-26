@@ -13,8 +13,8 @@ import { getStops, getTour } from "./tours";
 
 /**
  * Printable PDFs: delivery labels (100 × 150 mm, one per order) and the tour loading list (A4).
- * Uses DejaVu Sans when available (full Unicode incl. umlauts, installed in the Docker image),
- * otherwise Helvetica (WinAnsi: covers German umlauts and ß).
+ * Uses DejaVu Sans (installed in the Docker image) or Arial on macOS – both cover Latin Extended –,
+ * otherwise Helvetica (WinAnsi: covers German umlauts and ß, but e.g. not ş/ı).
  */
 
 const MM = 72 / 25.4;
@@ -24,11 +24,14 @@ const FONT_PATHS = [
   process.env.PDF_FONT_PATH,
   "/usr/share/fonts/dejavu/DejaVuSans.ttf",
   "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+  // macOS (local development): Arial covers Latin Extended (ş, ı, ł …)
+  "/System/Library/Fonts/Supplemental/Arial.ttf",
 ].filter(Boolean) as string[];
 const FONT_BOLD_PATHS = [
   process.env.PDF_FONT_BOLD_PATH,
   "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf",
   "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+  "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
 ].filter(Boolean) as string[];
 
 async function fonts(doc: PDFDocument): Promise<{ regular: PDFFont; bold: PDFFont; unicode: boolean }> {

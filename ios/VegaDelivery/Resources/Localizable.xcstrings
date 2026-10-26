@@ -1590,6 +1590,16 @@
           }
         }
       }
+    },
+    "All deliveries sent": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Zustellungen gesendet"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

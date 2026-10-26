@@ -70,6 +70,7 @@ struct SignatureSheet: View {
                 GeometryReader { geo in
                     ZStack(alignment: .bottomLeading) {
                         RoundedRectangle(cornerRadius: 12).fill(.white)
+                        RoundedRectangle(cornerRadius: 12).stroke(.gray.opacity(0.35), lineWidth: 1)
                         Path { p in
                             p.move(to: CGPoint(x: 24, y: geo.size.height - 50))
                             p.addLine(to: CGPoint(x: geo.size.width - 24, y: geo.size.height - 50))
@@ -94,12 +95,14 @@ struct SignatureSheet: View {
                 }
                 .frame(height: 260)
                 .accessibilityIdentifier("signatureCanvas")
-                Button("Clear") { strokes = []; current = [] }.disabled(strokes.isEmpty)
+                Button("Clear") { strokes = []; current = [] }.disabled(allStrokes.isEmpty)
                 Spacer()
             }
             .padding()
             .navigationTitle("Signature")
             .navigationBarTitleDisplayMode(.inline)
+            // Swiping down would dismiss the sheet and cancel the stroke being drawn
+            .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
@@ -107,17 +110,20 @@ struct SignatureSheet: View {
                         if let image = render() { onSigned(image) }
                         dismiss()
                     }
-                    .disabled(strokes.allSatisfy { $0.count < 2 })
+                    .disabled(allStrokes.allSatisfy { $0.count < 2 })
                 }
             }
         }
     }
 
+    /// Finished strokes plus the one being drawn (a cancelled gesture never calls onEnded)
+    private var allStrokes: [[CGPoint]] { (strokes + [current]).filter { !$0.isEmpty } }
+
     @MainActor
     private func render() -> UIImage? {
         let size = canvasSize == .zero ? CGSize(width: 600, height: 260) : canvasSize
         let renderer = ImageRenderer(content:
-            SignatureStrokes(strokes: strokes)
+            SignatureStrokes(strokes: allStrokes)
                 .stroke(.black, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                 .frame(width: size.width, height: size.height)
                 .background(.white)

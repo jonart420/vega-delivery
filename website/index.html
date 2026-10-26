@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VEGA Delivery Docs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="VEGA Delivery – open-source delivery planning with car-optimized routes, a driver app, live tracking links and customer notifications. Documentation, setup and screenshots.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single long manual – sticky section nav, content column of ~68ch, wide screenshot plates,
+   a "route strip" motif (numbered stops on a line) that recurs for sequences. */
+:root {
+  --paper: #f4f6fa;        /* page ground, cool off-white */
+  --sheet: #ffffff;        /* panels, label stock */
+  --ink: #0f1a2b;          /* text */
+  --ink-2: #4a5568;        /* secondary text */
+  --rule: #d9dfe8;         /* hairlines */
+  --route: #2563eb;        /* product brand blue = route line */
+  --route-soft: #e3ebfd;
+  --ok: #15803d;           /* delivered */
+  --warn: #b45309;         /* arrived / attention */
+  --fail: #c2410c;         /* failed */
+  --code-bg: #0f1a2b;
+  --code-fg: #e6edf7;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c121d; --sheet: #141c2a; --ink: #e8edf5; --ink-2: #a3aec0; --rule: #263247;
+    --route: #6b9bff; --route-soft: #1a2846; --ok: #4ade80; --warn: #fbbf24; --fail: #fb923c;
+    --code-bg: #070b12; --code-fg: #e6edf7; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c121d; --sheet: #141c2a; --ink: #e8edf5; --ink-2: #a3aec0; --rule: #263247;
+  --route: #6b9bff; --route-soft: #1a2846; --ok: #4ade80; --warn: #fbbf24; --fail: #fb923c;
+  --code-bg: #070b12; --code-fg: #e6edf7; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.65 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--route); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--route); outline-offset: 2px; border-radius: 4px; }
+code, kbd { font-family: var(--mono); font-size: 0.88em; }
+:not(pre) > code { background: var(--route-soft); padding: 0.1em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.12; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.4rem); font-stretch: 85%; font-weight: 750; letter-spacing: -0.01em; }
+h3 { font-size: 1.2rem; font-weight: 700; font-stretch: 92%; }
+p { margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+.prose { max-width: 68ch; display: grid; gap: 0.9em; }
+.eyebrow { font: 600 0.74rem/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--route); }
+.muted { color: var(--ink-2); }
+
+/* ── Top bar ─────────────────────────────── */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font: 800 1.05rem var(--display); letter-spacing: 0.02em; white-space: nowrap; }
+.brand svg { width: 28px; height: 28px; flex: none; }
+.brand span { color: var(--route); }
+.top nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+.top nav a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+.top nav a:hover { color: var(--ink); background: var(--route-soft); }
+
+/* ── Hero ────────────────────────────────── */
+.hero { padding-block: 56px 40px; display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 1.4rem + 4vw, 4.4rem); font-stretch: 78%; font-weight: 800; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--route); }
+.hero .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 46ch; margin-top: 18px; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid var(--rule); color: var(--ink); background: var(--sheet); }
+.btn.primary { background: var(--route); border-color: var(--route); color: #fff; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 24px; font: 0.82rem var(--mono); color: var(--ink-2); }
+.facts b { color: var(--ink); font-weight: 600; }
+
+/* Route strip: numbered stops on a line, colored by delivery state */
+.route { position: relative; display: flex; justify-content: space-between; gap: 6px; margin-top: 30px; max-width: 460px; }
+.route::before { content: ""; position: absolute; left: 14px; right: 14px; top: 14px; height: 3px; background: var(--route); border-radius: 3px; }
+.stop { position: relative; display: grid; justify-items: center; gap: 6px; font: 0.68rem var(--mono); color: var(--ink-2); text-align: center; }
+.stop i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 700 0.78rem var(--mono); font-style: normal; color: #fff; background: var(--route); border: 3px solid var(--paper); }
+.stop.d i { background: var(--ok); } .stop.f i { background: var(--fail); } .stop.a i { background: var(--warn); } .stop.o i { background: var(--ink-2); }
+.stop.depot i { background: var(--ink); border-radius: 7px; }
+
+/* Screenshot plates */
+.plate { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px -24px rgba(15, 26, 43, 0.35); }
+.plate .bar { display: flex; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+.plate .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--rule); }
+.plate img.paper, .gallery img[src*="loading-list"] { background: #fff; }
+.plate figcaption { padding: 10px 14px; font-size: 0.86rem; color: var(--ink-2); border-top: 1px solid var(--rule); }
+.phone { margin: 0; display: grid; gap: 10px; justify-items: center; }
+.phone img { border-radius: 26px; border: 6px solid var(--ink); background: var(--ink); width: 100%; max-width: 260px; }
+.phone figcaption { font-size: 0.84rem; color: var(--ink-2); text-align: center; max-width: 30ch; }
+
+/* Sections */
+section.block { padding-block: 64px; border-top: 1px solid var(--rule); display: grid; gap: 28px; }
+.head { display: grid; gap: 10px; max-width: 70ch; }
+.grid2 { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid3 { display: grid; gap: 22px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.phones { display: grid; gap: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; }
+.feature { display: grid; gap: 8px; align-content: start; padding-top: 14px; border-top: 3px solid var(--route); }
+.feature p { color: var(--ink-2); font-size: 0.96rem; }
+.split { display: grid; gap: 32px; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start; }
+.split.rev { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+ul.ticks { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+ul.ticks li { padding-left: 24px; position: relative; }
+ul.ticks li::before { content: ""; position: absolute; left: 4px; top: 0.62em; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--route); }
+
+/* Day sequence (a real order of events) */
+ol.day { margin: 0; padding: 0; list-style: none; counter-reset: day; display: grid; gap: 0; }
+ol.day li { counter-increment: day; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding-bottom: 22px; position: relative; }
+ol.day li::before { content: counter(day); width: 32px; height: 32px; border-radius: 50%; background: var(--route); color: #fff; display: grid; place-items: center; font: 700 0.85rem var(--mono); position: relative; z-index: 1; }
+ol.day li::after { content: ""; position: absolute; left: 15px; top: 32px; bottom: 0; width: 2px; background: var(--route-soft); }
+ol.day li:last-child::after { display: none; }
+ol.day b { font-family: var(--display); font-size: 1.05rem; display: block; }
+
+/* Code */
+pre { margin: 0; background: var(--code-bg); color: var(--code-fg); padding: 16px 18px; border-radius: 10px; overflow-x: auto; font: 0.86rem/1.6 var(--mono); }
+pre .c { color: #8aa0bd; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); background: var(--paper); }
+tr:last-child td { border-bottom: 0; }
+td code { white-space: nowrap; }
+
+/* Label specimen: the customer indicator */
+.label { background: #fff; color: #0f1a2b; border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; border: 1px dashed #9aa6b8; }
+.label .k { font: 600 0.68rem var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: #4a5568; }
+.label .v { font: 600 0.95rem var(--mono); overflow-wrap: anywhere; }
+.callout { border-left: 4px solid var(--warn); background: var(--sheet); padding: 14px 18px; border-radius: 0 10px 10px 0; display: grid; gap: 6px; max-width: 72ch; }
+.callout.ok { border-color: var(--ok); }
+
+/* Gallery */
+.gallery { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.gallery a { display: grid; gap: 8px; text-decoration: none; color: var(--ink-2); font-size: 0.86rem; }
+.gallery img { border-radius: 10px; border: 1px solid var(--rule); aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; width: 100%; background: var(--sheet); }
+.gallery.mobile { grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); }
+.gallery.mobile img { aspect-ratio: 9 / 19.5; border-radius: 16px; }
+
+footer { border-top: 1px solid var(--rule); padding-block: 36px 48px; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; font-size: 0.88rem; color: var(--ink-2); }
+
+@media (max-width: 960px) {
+  .hero, .split, .split.rev { grid-template-columns: minmax(0, 1fr); }
+  .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); }
+  .top nav { display: none; }
+  section.block { padding-block: 44px; }
+  .hero { padding-block: 32px 28px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="VEGA Delivery home">
+      <svg viewBox="0 0 80 80" aria-hidden="true"><rect width="80" height="80" rx="16" fill="#2563eb"/><g fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M14 26 L40 13 L66 26 L66 56 L40 69 L14 56 Z"/><path d="M14 26 L40 39 L66 26 M40 39 L40 69"/></g></svg>
+      VEGA <span>Delivery</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#product">Product</a>
+      <a href="#setup">Setup</a>
+      <a href="#usage">Usage</a>
+      <a href="#app">Driver app</a>
+      <a href="#screenshots">Screenshots</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- ── Hero ───────────────────────────────────────── -->
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Open source · AGPL-3.0</p>
+      <h1>Plan the tour.<br>Drive the <em>route</em>.<br>Tell the customer.</h1>
+      <p class="lead">VEGA Delivery is a self-hosted delivery system for small and mid-sized teams: address book, products and orders in the back office, car-optimized tours with turn-by-turn navigation in the driver app, and a live tracking link your customers get by e-mail and WhatsApp.</p>
+      <div class="cta">
+        <a class="btn primary" href="#setup">Set it up</a>
+        <a class="btn" href="#screenshots">See the screens</a>
+      </div>
+      <div class="route" aria-label="Example tour: depot, two delivered stops, one failed, one arrived, two open">
+        <div class="stop depot"><i>⌂</i>Depot</div>
+        <div class="stop d"><i>1</i>Delivered</div>
+        <div class="stop f"><i>2</i>Refused</div>
+        <div class="stop a"><i>3</i>Arrived</div>
+        <div class="stop"><i>4</i>Tracking</div>
+        <div class="stop o"><i>5</i>Open</div>
+      </div>
+      <p class="facts"><span><b>Next.js 16</b> back office</span><span><b>PostgreSQL 17</b></span><span><b>Valhalla</b> routing</span><span><b>iOS + Android</b> apps</span><span><b>EN / DE</b></span></p>
+    </div>
+    <figure class="plate">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <img src="assets/screenshots/tour-live.webp" width="2880" height="1800" alt="Tour view in the back office: list of six stops with delivery states next to a map of Hamburg with the route and the vehicle position">
+      <figcaption>A running tour: stop states update as the driver works, the blue dot is the vehicle.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── About ──────────────────────────────────────── -->
+  <section class="block" id="about">
+    <div class="head">
+      <p class="eyebrow">About</p>
+      <h2>Built for the people who load the van at 7 am</h2>
+    </div>
+    <div class="split">
+      <div class="prose">
+        <p>Most delivery software is either a spreadsheet with a map or an enterprise suite with a sales team. VEGA Delivery sits in between: one Docker Compose file, your own server, your own data, and every piece of the day covered – from typing in a new customer to the signature at the door.</p>
+        <p>The dispatcher keeps customers, products and orders, plans the orders of a day into tours and lets the routing engine find the fastest order of stops for a car. The driver signs in to the app by scanning a QR code, starts the tour and navigates stop by stop. Every outcome – delivered, left with a neighbour, refused with a reason – is logged against the customer and the tour.</p>
+        <p>Customers are not left guessing: when the tour starts they get a message that their delivery arrives today, and when the van is three stops away, they get a live tracking link.</p>
+      </div>
+      <div class="grid2">
+        <div class="feature"><h3>Self-hosted</h3><p>Docker Compose with PostgreSQL, Valhalla and the back office. No tracking of your customers by a third party.</p></div>
+        <div class="feature"><h3>Open source</h3><p>AGPL-3.0. If someone offers a modified version as a service, they have to publish their changes.</p></div>
+        <div class="feature"><h3>Any region</h3><p>Routing data from OpenStreetMap: a city, a country or the whole planet, set in one variable.</p></div>
+        <div class="feature"><h3>Two languages</h3><p>English and German throughout – back office, messages, tracking page and both apps – with full Unicode support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Product ────────────────────────────────────── -->
+  <section class="block" id="product">
+    <div class="head">
+      <p class="eyebrow">The product</p>
+      <h2>How a delivery day runs</h2>
+      <p class="muted">The steps below happen in this order on every tour. Each one is a screen or an automatic action in VEGA Delivery.</p>
+    </div>
+    <div class="split">
+      <ol class="day">
+        <li><div><b>Orders come in</b><span class="muted">Create orders for customers from the address book, with items from your product catalogue, a delivery date and an optional time window.</span></div></li>
+        <li><div><b>The dispatcher plans tours</b><span class="muted">Open orders of a day go into a tour. Several orders of one customer become one stop. <em>Optimize route</em> finds the fastest order for a car.</span></div></li>
+        <li><div><b>Release to the driver</b><span class="muted">Assign a driver and release the tour. Print the loading list and labels.</span></div></li>
+        <li><div><b>The driver starts the tour</b><span class="muted">Customers get "your delivery arrives today". The first three stops get a live tracking link right away.</span></div></li>
+        <li><div><b>Stop by stop</b><span class="muted">The app navigates by car. On arrival, the driver taps the outcome and adds the required proof: signature, photo, recipient name or a barcode scan.</span></div></li>
+        <li><div><b>The window moves on</b><span class="muted">With every completed stop the next customer enters the three-stop window and receives the tracking link.</span></div></li>
+        <li><div><b>Close the tour</b><span class="muted">Stops that could not be reached go back to open orders for re-planning. The full log stays with each customer.</span></div></li>
+      </ol>
+      <figure class="plate">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/screenshots/tour-planner.webp" width="2880" height="1800" loading="lazy" alt="Tour planner with a numbered route on the map, driver and vehicle fields and the stop list">
+        <figcaption>The tour planner: numbered stops on the optimized route, ready to release.</figcaption>
+      </figure>
+    </div>
+
+    <div class="grid3">
+      <div class="feature"><h3>Address book</h3><p>Customers with geocoded addresses, a draggable delivery pin, delivery notes, time windows, contact data and notification consent. CSV import and export.</p></div>
+      <div class="feature"><h3>Products &amp; orders</h3><p>A category tree and products with SKU, unit, price, VAT and EAN-13. Orders keep a snapshot of every item, so editing a product never changes history.</p></div>
+      <div class="feature"><h3>Car-optimized tours</h3><p>Exact optimization up to 13 stops, local search (2-opt, Or-opt) above, soft time windows, pinned positions and manual reordering.</p></div>
+      <div class="feature"><h3>Outcomes you define</h3><p>Delivered, left with neighbour, safe place, nobody home, refused, aborted – and any outcome you add, each with its own required proofs and reasons.</p></div>
+      <div class="feature"><h3>Tracking link</h3><p>A page per stop. The vehicle position appears only once the customer is among the next stops – nobody sees where the van was an hour ago.</p></div>
+      <div class="feature"><h3>E-mail &amp; WhatsApp</h3><p>SMTP for e-mail, the WhatsApp Cloud API or Twilio for WhatsApp. Templates per language, automatic and manual sending, every message logged.</p></div>
+    </div>
+
+    <div class="split rev">
+      <div class="grid2">
+        <figure class="plate">
+          <img class="paper" src="assets/screenshots/labels.webp" width="933" height="1400" loading="lazy" alt="Printed delivery label with recipient, order items, EAN-13 delivery code and EAN-8 composite customer code">
+          <figcaption>Delivery label, 100 × 150 mm</figcaption>
+        </figure>
+        <figure class="plate">
+          <img class="paper" src="assets/screenshots/customer-sheet.webp" width="990" height="1400" loading="lazy" alt="One-page customer barcode sheet with a large EAN-8 composite symbol">
+          <figcaption>Customer barcode sheet</figcaption>
+        </figure>
+      </div>
+      <div class="prose">
+        <p class="eyebrow">Barcodes</p>
+        <h3>Two codes, one for the parcel, one for the door</h3>
+        <p>Every order carries an <strong>EAN-13 delivery code</strong> from the GS1 range for internal use. It can change with every delivery, or stay constant per customer for reusable crates.</p>
+        <p>Every customer has a <strong>customer indicator</strong>: an EAN-8 composite symbol (ISO/IEC 24723) with the customer number in the bars and the name in the 2D part above. Print it once on a one-page sheet and leave it at the delivery point. Scanning it at the door is the proof of delivery – no new label per order.</p>
+        <div class="label" aria-label="Example customer indicator content">
+          <span class="k">Linear part · EAN-8</span>
+          <span class="v">5245165 + check digit 2 → 52451652</span>
+          <span class="k">2D part · GS1 AI (91)</span>
+          <span class="v">(91)Herbert_M%C3%BCller_-_Strandleben_GmbH</span>
+          <span class="k">Decoded by the app</span>
+          <span class="v">Herbert Müller - Strandleben GmbH</span>
+        </div>
+        <p class="muted">GS1 character set 82 has neither spaces nor umlauts, so spaces become <code>_</code> and other characters are UTF-8 percent-encoded – the symbol stays standard-compliant.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Setup ──────────────────────────────────────── -->
+  <section class="block" id="setup">
+    <div class="head">
+      <p class="eyebrow">Setup</p>
+      <h2>Running in about fifteen minutes</h2>
+      <p class="muted">You need a Linux server or a Mac with Docker and Docker Compose, and about 5 GB of disk for a city or region. A whole country needs more – see <a href="#regions">routing regions</a>.</p>
+    </div>
+
+    <div class="split">
+      <div class="prose">
+        <h3>1. Create the configuration</h3>
+        <p><code>generate-env.sh</code> copies <code>.env.example</code> to <code>.env</code> and fills every secret with a strong random value. It prints the first admin password.</p>
+        <h3>2. Choose your region and channels</h3>
+        <p>Edit <code>.env</code>: set <code>VALHALLA_TILE_URLS</code> to the OpenStreetMap extract of your area, and fill in <code>SMTP_*</code> and <code>WHATSAPP_*</code> if you want to notify customers.</p>
+        <h3>3. Start</h3>
+        <p>The first start downloads the map data and builds the routing tiles – minutes for a city, an hour or two for a country. The back office is usable right away; route optimization starts working once the build is done.</p>
+        <h3>4. Put HTTPS in front</h3>
+        <p>The back office listens on <code>127.0.0.1:3100</code>. Use any reverse proxy with TLS and set <code>PUBLIC_BASE_URL</code> to your domain – it appears in tracking links, e-mails and the drivers' login QR codes.</p>
+      </div>
+      <div style="display:grid;gap:14px;min-width:0">
+<pre><span class="c"># get the code and create .env with random secrets</span>
+git clone &lt;your fork&gt; vega-delivery
+cd vega-delivery
+./scripts/generate-env.sh https://delivery.example.com
+
+<span class="c"># region, e-mail, WhatsApp, maps …</span>
+nano .env
+
+<span class="c"># start database, routing engine and back office</span>
+docker compose up -d
+docker compose logs -f valhalla
+
+<span class="c"># optional: demo data (customers, orders, a tour)</span>
+cd backend
+BASE_URL=http://localhost:3100 node scripts/seed-demo.mjs</pre>
+<pre><span class="c"># Caddy example for HTTPS</span>
+delivery.example.com {
+  reverse_proxy 127.0.0.1:3100
+}</pre>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>The security gate</strong>
+      <p>In production, the back office refuses to run while <code>.env</code> still holds example values (<code>change-me…</code>), empty secrets, passwords shorter than 16 characters or secrets shorter than 32 bytes. Every page then explains what to fix, the API answers 503, no admin is created and no message is sent. Fix <code>.env</code> and run <code>docker compose up -d</code> again.</p>
+    </div>
+
+    <h3>Configuration reference</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Variable</th><th>What it does</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>APP_ENV</code></td><td><code>production</code> keeps the security gate on. <code>development</code> turns it off – never on a server.</td><td><code>production</code></td></tr>
+          <tr><td><code>PUBLIC_BASE_URL</code></td><td>Public address of your installation, used in tracking links, e-mails and QR codes.</td><td><code>https://delivery.example.com</code></td></tr>
+          <tr><td><code>POSTGRES_PASSWORD</code></td><td>Database password.</td><td>32 random characters</td></tr>
+          <tr><td><code>ADMIN_USERNAME</code>, <code>ADMIN_PASSWORD</code></td><td>First admin, created only while no admin exists.</td><td><code>admin</code></td></tr>
+          <tr><td><code>LOGIN_CODE_SECRET</code></td><td>Derives the drivers' login codes. Changing it invalidates every printed code.</td><td><code>openssl rand -base64 48</code></td></tr>
+          <tr><td><code>VALHALLA_TILE_URLS</code></td><td>OpenStreetMap extracts for routing, space separated.</td><td>Geofabrik URL of your region</td></tr>
+          <tr><td><code>MAP_PROVIDER</code></td><td><code>osm</code> (free OpenStreetMap vector map) or <code>mapbox</code> with <code>MAPBOX_ACCESS_TOKEN</code> and <code>MAPBOX_STYLE</code>. Applies to back office, tracking page and apps.</td><td><code>osm</code></td></tr>
+          <tr><td><code>SMTP_HOST</code> … <code>SMTP_FROM</code></td><td>E-mail delivery through any SMTP provider. Empty host turns e-mail off.</td><td><code>smtp.example.com</code></td></tr>
+          <tr><td><code>WHATSAPP_PROVIDER</code></td><td><code>none</code>, <code>log</code>, <code>meta</code> (WhatsApp Cloud API) or <code>twilio</code>.</td><td><code>meta</code></td></tr>
+          <tr><td><code>DEFAULT_LOCALE</code></td><td>Default language of the back office.</td><td><code>en</code> or <code>de</code></td></tr>
+          <tr><td><code>BRAND_NAME</code>, <code>BRAND_COLOR</code></td><td>Name and accent colour. The logo files live in <code>branding/</code>.</td><td><code>#2563eb</code></td></tr>
+          <tr><td><code>GEOCODER_URL</code>, <code>GEOCODER_BBOX</code></td><td>Address search (Photon). Defaults to the public komoot instance; the box limits results to your area.</td><td><code>8.4,53.3,10.4,54.0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid3" id="regions">
+      <div class="feature">
+        <h3>Routing regions</h3>
+        <p>A city extract builds in minutes with 2 GB of RAM; a German state in about 10 minutes; a whole country in one to two hours with 8–16 GB. The planet works too, but needs more than 64 GB of RAM and about a terabyte of disk. Update monthly with <code>scripts/valhalla-update.sh</code>.</p>
+      </div>
+      <div class="feature">
+        <h3>WhatsApp</h3>
+        <p>Messages a business sends first need a template approved by Meta or Twilio. Each template gets three variables: the customer name, the ETA and the tracking link. Set the template name per message kind, e.g. <code>WHATSAPP_META_TEMPLATE_APPROACHING</code>.</p>
+      </div>
+      <div class="feature">
+        <h3>Branding</h3>
+        <p>Replace <code>logo.svg</code>, <code>logo.png</code> and <code>favicon.png</code> in <code>branding/</code>. The folder is mounted into the container, so no rebuild is needed. The logo appears in the back office, on labels, in e-mails and on the tracking page.</p>
+      </div>
+      <div class="feature">
+        <h3>Backups</h3>
+        <p><code>scripts/db-backup.sh</code> writes a compressed dump to <code>backups/</code> and removes dumps older than 30 days. Also keep <code>.env</code> (above all <code>LOGIN_CODE_SECRET</code>) and the uploads volume with photos and signatures.</p>
+      </div>
+      <div class="feature">
+        <h3>Updates</h3>
+        <p><code>git pull</code>, <code>docker compose build backend</code>, <code>docker compose up -d</code>. Database migrations run automatically when the back office starts.</p>
+      </div>
+      <div class="feature">
+        <h3>Driver apps</h3>
+        <p>Build the iOS app from <code>ios/</code> with XcodeGen and Xcode, the Android app from <code>android/</code> with Android Studio. Set your own bundle id, app name and default server in <code>Config/Shared.xcconfig</code> and <code>gradle.properties</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Usage ──────────────────────────────────────── -->
+  <section class="block" id="usage">
+    <div class="head">
+      <p class="eyebrow">Usage</p>
+      <h2>Working in the back office</h2>
+      <p class="muted">Admins and dispatchers work in the browser. The sidebar groups everything into Dispatch, Master data and Administration.</p>
+    </div>
+
+    <div class="split">
+      <div class="prose">
+        <h3>First steps after installing</h3>
+        <ul class="ticks">
+          <li><strong>Settings → General:</strong> company name, phone (shown on the tracking page) and the depot, which becomes start and end of new tours.</li>
+          <li><strong>Team:</strong> add drivers. Each gets a personal QR login code to print or send. Dispatchers and admins also get a password for the back office.</li>
+          <li><strong>Address book</strong> and <strong>Products:</strong> enter or import your customers and catalogue.</li>
+          <li><strong>Settings → Notifications:</strong> check the channels, choose when messages go out and adjust the templates.</li>
+        </ul>
+      </div>
+      <figure class="plate">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/screenshots/dashboard.webp" width="2880" height="1800" loading="lazy" alt="Dashboard with counters for unplanned orders, failed deliveries and failed messages, today's tours and latest deliveries">
+        <figcaption>The dashboard shows what needs attention today.</figcaption>
+      </figure>
+    </div>
+
+    <div class="split rev">
+      <figure class="plate">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/screenshots/customer.webp" width="2880" height="1800" loading="lazy" alt="Customer form with name, address, contact and delivery settings, a map with the delivery pin and the customer barcode">
+        <figcaption>A customer: address with delivery pin, notification consent, delivery settings and the customer barcode.</figcaption>
+      </figure>
+      <div class="prose">
+        <h3>Address book</h3>
+        <p>Search the address field to fill street, number, postcode and city in one go. Addresses are geocoded on save; drag the pin when the van has to stop at the back entrance. Delivery notes ("gate code 4711") show up in the app and on labels.</p>
+        <p>Turn on <em>Notify by e-mail</em> or <em>Notify via WhatsApp</em> only with the customer's consent – the time of consent is stored. Each customer can have its own language for messages and the tracking page.</p>
+        <p>The customer page also lists all orders and the full delivery history, including photos and signatures.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="prose">
+        <h3>Orders and tours</h3>
+        <p>Create an order from the customer page or under <em>New order</em>. Filter the order list by date and status, select open orders and plan them into a new or existing tour – or print their labels.</p>
+        <p>In the tour planner, <em>Optimize route</em> calculates the fastest order for a car. Use ▲ ▼ to change the order by hand and the pin to keep a stop at its position when you optimize again. Assign a driver and <em>Release to driver</em>. Changing stops afterwards sets the tour back to draft.</p>
+        <p>While the tour runs, the same page becomes a live view: stop states, the vehicle on the map, the delivery log and every message sent to customers.</p>
+      </div>
+      <figure class="plate">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/screenshots/tour-log.webp" width="2880" height="1800" loading="lazy" alt="Delivery log of a running tour with outcomes, reasons, recipients and signature links">
+        <figcaption>The log: who received what, when, with reason, recipient and proof.</figcaption>
+      </figure>
+    </div>
+
+    <div class="split rev">
+      <figure class="plate">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/screenshots/settings-outcomes.webp" width="2880" height="1800" loading="lazy" alt="Settings for delivery outcomes with required proofs and reasons per outcome">
+        <figcaption>Outcomes and reasons are yours to define.</figcaption>
+      </figure>
+      <div class="prose">
+        <h3>Outcomes and reasons</h3>
+        <p>The outcome buttons in the driver app come from <em>Settings → Outcomes &amp; reasons</em>. For each outcome choose its type (success, failure or neutral), a colour, and which proofs it requires: reason, photo, signature, recipient name, barcode scan.</p>
+        <p>Add reasons per outcome, such as "Goods damaged" or "Address not found". Outcomes and reasons that were already used are deactivated instead of deleted, so the log stays complete.</p>
+        <h3>Notifications</h3>
+        <p>Set how many stops ahead the tracking link goes out (default: three), whether the day-start message is sent, and whether customers get a confirmation after delivery. Templates exist per message kind and language, with placeholders like <code>{{eta}}</code> and <code>{{tracking_link}}</code>. Send a test message before going live.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Driver app ─────────────────────────────────── -->
+  <section class="block" id="app">
+    <div class="head">
+      <p class="eyebrow">Driver app</p>
+      <h2>Everything a driver needs, nothing else</h2>
+      <p class="muted">Native apps for iOS (SwiftUI) and Android (Jetpack Compose), both with Ferrostar turn-by-turn navigation. The Android app is a basic version that has not been compiled yet.</p>
+    </div>
+    <div class="phones">
+      <figure class="phone"><img src="assets/screenshots/app-tour.webp" width="786" height="1704" loading="lazy" alt="App tour detail with route map, distance, Navigate and Finish tour buttons"><figcaption>Tour with route, distance and offline routes</figcaption></figure>
+      <figure class="phone"><img src="assets/screenshots/app-navigation.webp" width="786" height="1704" loading="lazy" alt="App navigation screen with the next stop, delivery note and a Drive button"><figcaption>Next stop with delivery note</figcaption></figure>
+      <figure class="phone"><img src="assets/screenshots/app-outcomes.webp" width="786" height="1704" loading="lazy" alt="App stop sheet with coloured outcome buttons such as Delivered, Nobody home and Refused"><figcaption>Outcome buttons from the back office</figcaption></figure>
+      <figure class="phone"><img src="assets/screenshots/app-proof-signed.webp" width="786" height="1704" loading="lazy" alt="App proof form with recipient name and captured signature"><figcaption>Required proofs, here recipient and signature</figcaption></figure>
+    </div>
+    <div class="grid3">
+      <div class="feature"><h3>Sign in by QR</h3><p>The login code contains the server address, so drivers never type a URL. Lost phone? Revoke the code in <em>Team</em> and the device is signed out.</p></div>
+      <div class="feature"><h3>Navigation for cars</h3><p>Voice instructions in the device language, arrival detection within 50 m, wrong-way warnings, <em>Later</em> to move a stop to the end and <em>Re-optimize</em> from the current position.</p></div>
+      <div class="feature"><h3>Works offline</h3><p>Tours and route legs are stored on the phone. Recorded deliveries wait in an outbox and are sent when the network is back – never twice.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Tracking ───────────────────────────────────── -->
+  <section class="block" id="tracking">
+    <div class="split rev">
+      <div class="phones" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <figure class="phone"><img src="assets/screenshots/tracking-waiting.webp" width="1170" height="2532" loading="lazy" alt="Tracking page before activation: delivery on its way today with expected time"><figcaption>Earlier in the day</figcaption></figure>
+        <figure class="phone"><img src="assets/screenshots/tracking-active.webp" width="1170" height="2532" loading="lazy" alt="Tracking page with live map, ETA and stops ahead"><figcaption>Three stops away</figcaption></figure>
+        <figure class="phone"><img src="assets/screenshots/tracking-delivered.webp" width="1170" height="2532" loading="lazy" alt="Tracking page showing the delivery as delivered"><figcaption>Delivered</figcaption></figure>
+      </div>
+      <div class="prose">
+        <p class="eyebrow">For your customers</p>
+        <h2>A tracking link that respects privacy</h2>
+        <p>Each stop gets its own link with a random 128-bit token. Before the van is close, the page shows the expected time and how many stops are ahead. Only within the last three stops does it show the vehicle on a map with a live ETA. After delivery it shows the result, and the link expires at the end of the tour day.</p>
+        <p>The page never shows other customers or the route of the van – only this delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Screenshots ────────────────────────────────── -->
+  <section class="block" id="screenshots">
+    <div class="head">
+      <p class="eyebrow">Screenshots</p>
+      <h2>Every screen</h2>
+      <p class="muted">Taken from a demo installation with fictional customers in Hamburg. Select an image to open it at full size.</p>
+    </div>
+    <h3>Back office</h3>
+    <div class="gallery">
+      <a href="assets/screenshots/login.webp"><img src="assets/screenshots/login.webp" loading="lazy" alt="Sign-in page">Sign-in</a>
+      <a href="assets/screenshots/dashboard.webp"><img src="assets/screenshots/dashboard.webp" loading="lazy" alt="Dashboard">Dashboard</a>
+      <a href="assets/screenshots/tours.webp"><img src="assets/screenshots/tours.webp" loading="lazy" alt="Tour list">Tours</a>
+      <a href="assets/screenshots/tour-planner.webp"><img src="assets/screenshots/tour-planner.webp" loading="lazy" alt="Tour planner">Tour planner (draft)</a>
+      <a href="assets/screenshots/tour-live.webp"><img src="assets/screenshots/tour-live.webp" loading="lazy" alt="Running tour">Running tour</a>
+      <a href="assets/screenshots/tour-log.webp"><img src="assets/screenshots/tour-log.webp" loading="lazy" alt="Delivery log">Delivery log</a>
+      <a href="assets/screenshots/tour-messages.webp"><img src="assets/screenshots/tour-messages.webp" loading="lazy" alt="Messages sent to customers">Customer messages</a>
+      <a href="assets/screenshots/orders.webp"><img src="assets/screenshots/orders.webp" loading="lazy" alt="Order list">Orders</a>
+      <a href="assets/screenshots/order.webp"><img src="assets/screenshots/order.webp" loading="lazy" alt="Order detail">Order with delivery code</a>
+      <a href="assets/screenshots/customers.webp"><img src="assets/screenshots/customers.webp" loading="lazy" alt="Address book">Address book</a>
+      <a href="assets/screenshots/customer.webp"><img src="assets/screenshots/customer.webp" loading="lazy" alt="Customer">Customer</a>
+      <a href="assets/screenshots/products.webp"><img src="assets/screenshots/products.webp" loading="lazy" alt="Products">Products</a>
+      <a href="assets/screenshots/settings-general.webp"><img src="assets/screenshots/settings-general.webp" loading="lazy" alt="General settings">Settings · General</a>
+      <a href="assets/screenshots/settings-outcomes.webp"><img src="assets/screenshots/settings-outcomes.webp" loading="lazy" alt="Outcome settings">Settings · Outcomes &amp; reasons</a>
+      <a href="assets/screenshots/settings-notifications.webp"><img src="assets/screenshots/settings-notifications.webp" loading="lazy" alt="Notification settings">Settings · Notifications</a>
+      <a href="assets/screenshots/settings-barcodes.webp"><img src="assets/screenshots/settings-barcodes.webp" loading="lazy" alt="Barcode settings">Settings · Barcodes</a>
+      <a href="assets/screenshots/team.webp"><img src="assets/screenshots/team.webp" loading="lazy" alt="Team with login codes">Team &amp; login codes</a>
+      <a href="assets/screenshots/loading-list.webp"><img src="assets/screenshots/loading-list.webp" loading="lazy" alt="Loading list PDF">Loading list (PDF)</a>
+    </div>
+    <h3>Driver app (iOS) and tracking page</h3>
+    <div class="gallery mobile">
+      <a href="assets/screenshots/app-login.webp"><img src="assets/screenshots/app-login.webp" loading="lazy" alt="App sign-in">Sign-in</a>
+      <a href="assets/screenshots/app-tours.webp"><img src="assets/screenshots/app-tours.webp" loading="lazy" alt="App tour list">Tours</a>
+      <a href="assets/screenshots/app-tour.webp"><img src="assets/screenshots/app-tour.webp" loading="lazy" alt="App tour detail">Tour</a>
+      <a href="assets/screenshots/app-stops.webp"><img src="assets/screenshots/app-stops.webp" loading="lazy" alt="App stop list">Stops</a>
+      <a href="assets/screenshots/app-stop.webp"><img src="assets/screenshots/app-stop.webp" loading="lazy" alt="App stop sheet">Stop</a>
+      <a href="assets/screenshots/app-outcomes.webp"><img src="assets/screenshots/app-outcomes.webp" loading="lazy" alt="App outcome buttons">Outcomes</a>
+      <a href="assets/screenshots/app-signature.webp"><img src="assets/screenshots/app-signature.webp" loading="lazy" alt="App signature">Signature</a>
+      <a href="assets/screenshots/app-proof-signed.webp"><img src="assets/screenshots/app-proof-signed.webp" loading="lazy" alt="App proof form">Proof of delivery</a>
+      <a href="assets/screenshots/app-navigation.webp"><img src="assets/screenshots/app-navigation.webp" loading="lazy" alt="App navigation">Navigation</a>
+      <a href="assets/screenshots/tracking-waiting.webp"><img src="assets/screenshots/tracking-waiting.webp" loading="lazy" alt="Tracking page waiting">Tracking · waiting</a>
+      <a href="assets/screenshots/tracking-active.webp"><img src="assets/screenshots/tracking-active.webp" loading="lazy" alt="Tracking page live">Tracking · live</a>
+      <a href="assets/screenshots/tracking-delivered.webp"><img src="assets/screenshots/tracking-delivered.webp" loading="lazy" alt="Tracking page delivered">Tracking · delivered</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>VEGA Delivery · AGPL-3.0-only · Map data © OpenStreetMap contributors</span>
+  <span>Documentation in the repository: <code>README.md</code>, <code>docs/</code>, <code>ios/README.md</code>, <code>android/README.md</code></span>
+</footer>
+
+</body>
+</html>

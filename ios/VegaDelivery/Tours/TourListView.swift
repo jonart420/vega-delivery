@@ -118,7 +118,11 @@ struct OutboxStatusRow: View {
                 Label("\(outbox.rejectedCount) deliveries rejected – open the tour", systemImage: "exclamationmark.octagon.fill")
                     .foregroundStyle(.red)
             }
-            if let error = outbox.lastError { Text(error).font(.caption2).foregroundStyle(.secondary) }
+            if outbox.pendingCount == 0 && outbox.rejectedCount == 0 {
+                Label("All deliveries sent", systemImage: "checkmark.circle").foregroundStyle(.green)
+            } else if let error = outbox.lastError {
+                Text(error).font(.caption2).foregroundStyle(.secondary)
+            }
         }
         .font(.footnote)
     }

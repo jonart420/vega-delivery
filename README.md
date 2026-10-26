@@ -88,6 +88,7 @@ All options are documented in [`.env.example`](.env.example). Highlights:
 
 ## Documentation
 
+- [website/](website/index.html) – documentation website with screenshots (static, ready for GitHub Pages)
 - [docs/SELF-HOSTING.md](docs/SELF-HOSTING.md) – reverse proxy, backups, updates
 - [docs/VALHALLA.md](docs/VALHALLA.md) – routing regions, resource needs, updates
 - [docs/NOTIFICATIONS.md](docs/NOTIFICATIONS.md) – e-mail, WhatsApp (Meta/Twilio), notification flow

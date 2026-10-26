@@ -65,4 +65,5 @@ Erste Schritte:
 5. Der Fahrer scannt den QR-Code in der App und startet die Tour.
 
 Alle Einstellungen sind in [`.env.example`](.env.example) beschrieben; die Dokumentation liegt
-in [`docs/`](docs) (Englisch).
+in [`docs/`](docs) (Englisch), eine Dokumentations-Webseite mit Screenshots in
+[`website/`](website/index.html) (Englisch).
