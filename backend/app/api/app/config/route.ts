@@ -22,6 +22,8 @@ export async function GET(req: Request) {
     map: { provider: mapProvider(), style_url: mapStyleUrl(true), attribution: mapAttribution() },
     map_style_url: mapStyleUrl(true),
     notify_lead_stops: settings.notifications.lead_stops,
+    /** which scans count as proof of delivery: any | customer (EAN-8) | delivery (EAN-13) */
+    scan_accept: settings.barcodes.scan_accept,
     outcomes: outcomes.map((o) => ({ ...o, reasons: reasons.filter((r) => r.outcome_code === o.code) })),
   });
 }

@@ -1,0 +1,1596 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "\"%@\" is the phone itself. Enter the server address under \"Server\".": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„%@“ ist das Telefon selbst. Unter „Server“ die Server-Adresse eintragen."
+          }
+        }
+      }
+    },
+    "\"localhost\" is the phone itself – enter the server address.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„localhost“ ist das Telefon selbst – Server-Adresse eintragen."
+          }
+        }
+      }
+    },
+    "#%@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "#%@"
+          }
+        }
+      }
+    },
+    "%@ %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ %@"
+          }
+        }
+      }
+    },
+    "%@ (%@)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@)"
+          }
+        }
+      }
+    },
+    "%@ does not answer.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ antwortet nicht."
+          }
+        }
+      }
+    },
+    "%@ is nearby.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ist in der Nähe."
+          }
+        }
+      }
+    },
+    "%@ is on the left.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ befindet sich auf der linken Seite."
+          }
+        }
+      }
+    },
+    "%@ is on the right.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ befindet sich auf der rechten Seite."
+          }
+        }
+      }
+    },
+    "%@ requires HTTPS.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ erfordert HTTPS."
+          }
+        }
+      }
+    },
+    "%@ × %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ × %@"
+          }
+        }
+      }
+    },
+    "%lld characters missing": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es fehlen %lld Zeichen"
+          }
+        }
+      }
+    },
+    "%lld deliveries rejected – open the tour": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Zustellungen abgelehnt – Tour öffnen"
+          }
+        }
+      }
+    },
+    "%lld deliveries waiting to be sent": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Zustellungen warten auf den Versand"
+          }
+        }
+      }
+    },
+    "%lld open": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld offen"
+          }
+        }
+      }
+    },
+    "%lld orders": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Bestellungen"
+          }
+        }
+      }
+    },
+    "%lld stops are still open. They count as not delivered.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch %lld Stopps offen. Sie zählen als nicht zugestellt."
+          }
+        }
+      }
+    },
+    "%lld stops without coordinates – open them in the tour list.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Stopps ohne Koordinaten – in der Tourliste öffnen."
+          }
+        }
+      }
+    },
+    "%lld/%lld stops": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/%lld Stopps"
+          }
+        }
+      }
+    },
+    "%lld/%lld stops done": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/%lld Stopps erledigt"
+          }
+        }
+      }
+    },
+    "Add": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinzufügen"
+          }
+        }
+      }
+    },
+    "All stops are done.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Stopps sind erledigt."
+          }
+        }
+      }
+    },
+    "All stops done": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Stopps erledigt"
+          }
+        }
+      }
+    },
+    "All stops of this tour are done.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Stopps dieser Tour sind erledigt."
+          }
+        }
+      }
+    },
+    "Back": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurück"
+          }
+        }
+      }
+    },
+    "Back to tour": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurück zur Tour"
+          }
+        }
+      }
+    },
+    "Barcode scan": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Barcode-Scan"
+          }
+        }
+      }
+    },
+    "Better voices: Settings → Accessibility → Spoken Content → Voices. Enhanced or premium voices are free and work offline.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bessere Stimmen: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen. Erweiterte oder Premium-Stimmen sind kostenlos und funktionieren offline."
+          }
+        }
+      }
+    },
+    "Calculating route …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Route wird berechnet …"
+          }
+        }
+      }
+    },
+    "Call": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anrufen"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        }
+      }
+    },
+    "Capture signature": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterschrift erfassen"
+          }
+        }
+      }
+    },
+    "Car / van": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto / Transporter"
+          }
+        }
+      }
+    },
+    "Cargo bike": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lastenrad"
+          }
+        }
+      }
+    },
+    "Checking …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfe …"
+          }
+        }
+      }
+    },
+    "Choose …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswählen …"
+          }
+        }
+      }
+    },
+    "Clear": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
+          }
+        }
+      }
+    },
+    "Close": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen"
+          }
+        }
+      }
+    },
+    "Code %@ does not belong to this stop": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code %@ gehört nicht zu diesem Stopp"
+          }
+        }
+      }
+    },
+    "Company": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Firma"
+          }
+        }
+      }
+    },
+    "Connected to %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbunden mit %@"
+          }
+        }
+      }
+    },
+    "Continue navigating": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiter navigieren"
+          }
+        }
+      }
+    },
+    "Customer notified with the tracking link.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kunde wurde mit dem Tracking-Link benachrichtigt."
+          }
+        }
+      }
+    },
+    "Delivered": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugestellt"
+          }
+        }
+      }
+    },
+    "Deliveries not yet sent are discarded when signing out.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht gesendete Zustellungen gehen beim Abmelden verloren."
+          }
+        }
+      }
+    },
+    "Destination reached: %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ziel erreicht: %@."
+          }
+        }
+      }
+    },
+    "Details (optional)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details (optional)"
+          }
+        }
+      }
+    },
+    "Discard and record again": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verwerfen und neu erfassen"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fertig"
+          }
+        }
+      }
+    },
+    "Drive": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Losfahren"
+          }
+        }
+      }
+    },
+    "ETA %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ETA %@"
+          }
+        }
+      }
+    },
+    "Error %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehler %lld"
+          }
+        }
+      }
+    },
+    "Finish tour": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour abschließen"
+          }
+        }
+      }
+    },
+    "Finish tour?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour abschließen?"
+          }
+        }
+      }
+    },
+    "Finished": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abgeschlossen"
+          }
+        }
+      }
+    },
+    "Go back and finish the tour.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurück und die Tour abschließen."
+          }
+        }
+      }
+    },
+    "Hold your login QR code inside the frame": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR-Anmeldecode in den Rahmen halten"
+          }
+        }
+      }
+    },
+    "I'm here": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ich bin da"
+          }
+        }
+      }
+    },
+    "Invalid address": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ungültige Adresse"
+          }
+        }
+      }
+    },
+    "Invalid address – example: https://delivery.example.com": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ungültige Adresse – Beispiel: https://lieferung.example.de"
+          }
+        }
+      }
+    },
+    "Invalid code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ungültiger Code"
+          }
+        }
+      }
+    },
+    "Invalid server address": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ungültige Server-Adresse"
+          }
+        }
+      }
+    },
+    "Later": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später"
+          }
+        }
+      }
+    },
+    "Leave navigation": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Navigation verlassen"
+          }
+        }
+      }
+    },
+    "Leave navigation?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Navigation verlassen?"
+          }
+        }
+      }
+    },
+    "Maps": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karten"
+          }
+        }
+      }
+    },
+    "Missing: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehlt: %@"
+          }
+        }
+      }
+    },
+    "Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "Name of the recipient": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name des Empfängers"
+          }
+        }
+      }
+    },
+    "Navigate": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Navigieren"
+          }
+        }
+      }
+    },
+    "Neighbour (name, house no., floor)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachbar (Name, Hausnr., Etage)"
+          }
+        }
+      }
+    },
+    "New order. Next stop: %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Reihenfolge. Nächster Stopp: %@."
+          }
+        }
+      }
+    },
+    "New route calculated: ": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Route wurde berechnet: "
+          }
+        }
+      }
+    },
+    "Next stop": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächster Stopp"
+          }
+        }
+      }
+    },
+    "No camera access – allow it in Settings or type the code.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Kamerazugriff – in den Einstellungen erlauben oder den Code eintippen."
+          }
+        }
+      }
+    },
+    "No camera available (simulator?) – type the code instead.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Kamera verfügbar (Simulator?) – Code eintippen."
+          }
+        }
+      }
+    },
+    "No location yet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch kein Standort"
+          }
+        }
+      }
+    },
+    "No login code found in the photo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Anmeldecode im Foto erkannt"
+          }
+        }
+      }
+    },
+    "No network connection.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Netzwerkverbindung."
+          }
+        }
+      }
+    },
+    "No outcomes configured – pull to refresh the tour list.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Status eingerichtet – Tourliste nach unten ziehen zum Aktualisieren."
+          }
+        }
+      }
+    },
+    "No route found": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Route gefunden"
+          }
+        }
+      }
+    },
+    "No tours": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Touren"
+          }
+        }
+      }
+    },
+    "Normally set automatically by your login QR code.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird normalerweise automatisch über deinen QR-Anmeldecode gesetzt."
+          }
+        }
+      }
+    },
+    "Not delivered": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht zugestellt"
+          }
+        }
+      }
+    },
+    "Note": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notiz"
+          }
+        }
+      }
+    },
+    "Note for the office (optional)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notiz fürs Büro (optional)"
+          }
+        }
+      }
+    },
+    "Notify": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benachrichtigen"
+          }
+        }
+      }
+    },
+    "Offline copy": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline-Kopie"
+          }
+        }
+      }
+    },
+    "Offline routes: %lld/%lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline-Routen: %lld/%lld"
+          }
+        }
+      }
+    },
+    "Offline · arrival by GPS": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline · Ankunft per GPS"
+          }
+        }
+      }
+    },
+    "Offline · stored route": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline · gespeicherte Route"
+          }
+        }
+      }
+    },
+    "Offline – showing saved tours": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline – gespeicherte Touren"
+          }
+        }
+      }
+    },
+    "On foot": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu Fuß"
+          }
+        }
+      }
+    },
+    "On the road": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterwegs"
+          }
+        }
+      }
+    },
+    "Or type the code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oder Code eintippen"
+          }
+        }
+      }
+    },
+    "Order %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bestellung %@"
+          }
+        }
+      }
+    },
+    "Orders (%lld)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bestellungen (%lld)"
+          }
+        }
+      }
+    },
+    "Outcome": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ergebnis"
+          }
+        }
+      }
+    },
+    "Photo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto"
+          }
+        }
+      }
+    },
+    "Photo could not be loaded": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto konnte nicht geladen werden"
+          }
+        }
+      }
+    },
+    "Please sign in the field": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte im Feld unterschreiben"
+          }
+        }
+      }
+    },
+    "Please turn around when possible.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte wenden, sobald es möglich ist."
+          }
+        }
+      }
+    },
+    "Please turn around · %@ left": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte wenden · noch %@"
+          }
+        }
+      }
+    },
+    "Proof could not be saved on the device": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachweis konnte nicht auf dem Gerät gespeichert werden"
+          }
+        }
+      }
+    },
+    "Re-optimize": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neu optimieren"
+          }
+        }
+      }
+    },
+    "Read code from photo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code aus Foto lesen"
+          }
+        }
+      }
+    },
+    "Reason": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grund"
+          }
+        }
+      }
+    },
+    "Recipient": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empfänger"
+          }
+        }
+      }
+    },
+    "Record a different outcome": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anderes Ergebnis erfassen"
+          }
+        }
+      }
+    },
+    "Rejected by the server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vom Server abgelehnt"
+          }
+        }
+      }
+    },
+    "Released tours of your dispatcher appear here.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freigegebene Touren deiner Disposition erscheinen hier."
+          }
+        }
+      }
+    },
+    "Retake photo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto erneut aufnehmen"
+          }
+        }
+      }
+    },
+    "Routes saved for offline use": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Routen offline gespeichert"
+          }
+        }
+      }
+    },
+    "Running": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Läuft"
+          }
+        }
+      }
+    },
+    "Safe place": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abstellort"
+          }
+        }
+      }
+    },
+    "Scan barcode": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Barcode scannen"
+          }
+        }
+      }
+    },
+    "Scan code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code scannen"
+          }
+        }
+      }
+    },
+    "Scan the customer barcode (%@) or a delivery label.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kunden-Barcode (%@) oder ein Lieferlabel scannen."
+          }
+        }
+      }
+    },
+    "Scan the customer barcode at the delivery point (customer no. %@).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kunden-Barcode an der Lieferstelle scannen (Kundennr. %@)."
+          }
+        }
+      }
+    },
+    "Scan the customer barcode or a delivery label": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kunden-Barcode oder Lieferlabel scannen"
+          }
+        }
+      }
+    },
+    "Scan the delivery label of the order.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lieferlabel der Bestellung scannen."
+          }
+        }
+      }
+    },
+    "Send now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt senden"
+          }
+        }
+      }
+    },
+    "Server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server"
+          }
+        }
+      }
+    },
+    "Server unreachable: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server nicht erreichbar: %@"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
+          }
+        }
+      }
+    },
+    "Show map": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte anzeigen"
+          }
+        }
+      }
+    },
+    "Sign again": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut unterschreiben"
+          }
+        }
+      }
+    },
+    "Sign in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmelden"
+          }
+        }
+      }
+    },
+    "Sign in with your personal login code. Your dispatcher finds it in the back office under \"Team\".": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde dich mit deinem persönlichen Anmeldecode an. Deine Disposition findet ihn im Backoffice unter „Team“."
+          }
+        }
+      }
+    },
+    "Sign out": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abmelden"
+          }
+        }
+      }
+    },
+    "Signature": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterschrift"
+          }
+        }
+      }
+    },
+    "Signed in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angemeldet"
+          }
+        }
+      }
+    },
+    "Signing in …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmelden …"
+          }
+        }
+      }
+    },
+    "Start tour": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour starten"
+          }
+        }
+      }
+    },
+    "Starting the tour notifies your customers and activates live tracking for the next %lld stops.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Start werden deine Kunden benachrichtigt und das Live-Tracking für die nächsten %lld Stopps aktiviert."
+          }
+        }
+      }
+    },
+    "Starting …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starte …"
+          }
+        }
+      }
+    },
+    "Stop": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopp"
+          }
+        }
+      }
+    },
+    "Stop %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopp %lld"
+          }
+        }
+      }
+    },
+    "Stop details": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stoppdetails"
+          }
+        }
+      }
+    },
+    "Stops": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopps"
+          }
+        }
+      }
+    },
+    "Sync": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronisierung"
+          }
+        }
+      }
+    },
+    "Take photo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto aufnehmen"
+          }
+        }
+      }
+    },
+    "Test connection": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindung testen"
+          }
+        }
+      }
+    },
+    "The customer has no notification channel or already received this message.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kunde hat keinen Benachrichtigungskanal oder diese Nachricht schon erhalten."
+          }
+        }
+      }
+    },
+    "The tour keeps running and the next stop is remembered. Recorded deliveries are saved.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Tour läuft weiter und der nächste Stopp wird gemerkt. Erfasste Zustellungen bleiben gespeichert."
+          }
+        }
+      }
+    },
+    "Today": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute"
+          }
+        }
+      }
+    },
+    "Tour finished": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour abgeschlossen"
+          }
+        }
+      }
+    },
+    "Tour is not saved for offline use yet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour ist noch nicht offline gespeichert"
+          }
+        }
+      }
+    },
+    "Tour not available": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour nicht verfügbar"
+          }
+        }
+      }
+    },
+    "Tours": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touren"
+          }
+        }
+      }
+    },
+    "Type code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code eintippen"
+          }
+        }
+      }
+    },
+    "Unexpected answer from the server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unerwartete Antwort vom Server"
+          }
+        }
+      }
+    },
+    "Upcoming": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demnächst"
+          }
+        }
+      }
+    },
+    "User": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benutzer"
+          }
+        }
+      }
+    },
+    "Voice instructions": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprachansagen"
+          }
+        }
+      }
+    },
+    "WhatsApp": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp"
+          }
+        }
+      }
+    },
+    "XXXX-XXXX-XXXX-XXXX-XXXX": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XXXX-XXXX-XXXX-XXXX-XXXX"
+          }
+        }
+      }
+    },
+    "https://delivery.example.com": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "https://lieferung.example.de"
+          }
+        }
+      }
+    },
+    "required": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pflicht"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

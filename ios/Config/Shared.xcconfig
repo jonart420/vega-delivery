@@ -1,0 +1,11 @@
+// Settings shared by all configurations.
+// Change the bundle id and display name for your own distribution.
+VD_BUNDLE_ID = org.example.vegadelivery
+VD_DISPLAY_NAME = VEGA Delivery
+// Default server address shown on the login screen. The login QR code contains the server URL,
+// so drivers normally never type it. localhost only works in the simulator;
+// scripts/local-server.sh writes this Mac's Wi-Fi address to Local.xcconfig (not in the repo).
+VD_DEFAULT_SERVER_URL = http:/$()/localhost:3100
+#include? "Local.xcconfig"
+// Your Apple team id (not in the repo): Config/Signing.local.xcconfig with DEVELOPMENT_TEAM = …
+#include? "Signing.local.xcconfig"

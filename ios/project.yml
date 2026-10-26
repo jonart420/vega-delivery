@@ -1,0 +1,91 @@
+# The Xcode project is generated from this file:  cd ios && xcodegen
+name: VegaDelivery
+options:
+  bundleIdPrefix: org.example
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+configs:
+  Debug: debug
+  Release: release
+configFiles:
+  Debug: Config/Debug.xcconfig
+  Release: Config/Release.xcconfig
+packages:
+  # Turn-by-turn navigation (Valhalla) incl. MapLibre map
+  Ferrostar:
+    url: https://github.com/stadiamaps/ferrostar
+    exactVersion: 0.58.0
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+targets:
+  VegaDelivery:
+    type: application
+    platform: iOS
+    sources:
+      - path: VegaDelivery
+    dependencies:
+      - package: Ferrostar
+        product: FerrostarCore
+      - package: Ferrostar
+        product: FerrostarMapLibreUI
+      - package: Ferrostar
+        product: FerrostarSwiftUI
+    info:
+      path: VegaDelivery/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: $(VD_DISPLAY_NAME)
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, de]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        ITSAppUsesNonExemptEncryption: false
+        # Texts are translated in Resources/InfoPlist.xcstrings
+        NSCameraUsageDescription: The camera scans your login code, delivery barcodes and takes proof-of-delivery photos.
+        NSPhotoLibraryUsageDescription: To read a login code or barcode from a photo.
+        NSLocationWhenInUseUsageDescription: Your location is used for navigation and to show customers when you arrive.
+        NSLocationAlwaysAndWhenInUseUsageDescription: Navigation and live tracking for customers continue while the screen is locked.
+        # location: navigation + live position with locked screen, audio: voice instructions in background
+        UIBackgroundModes: [location, audio]
+        NSLocalNetworkUsageDescription: The app connects to a delivery server in your local network.
+        NSAppTransportSecurity:
+          # Servers in the local network (http://Mac-name.local:3100) for testing
+          NSAllowsLocalNetworking: true
+        VDDefaultServerURL: $(VD_DEFAULT_SERVER_URL)
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(VD_BUNDLE_ID)
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  VegaDeliveryTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [VegaDeliveryTests]
+    dependencies:
+      - target: VegaDelivery
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(VD_BUNDLE_ID).tests
+schemes:
+  VegaDelivery:
+    build:
+      targets:
+        VegaDelivery: all
+        VegaDeliveryTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [VegaDeliveryTests]
+    archive:
+      config: Release

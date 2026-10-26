@@ -1,0 +1,21 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSCameraUsageDescription" : { "localizations" : {
+      "en" : { "stringUnit" : { "state" : "translated", "value" : "The camera scans your login code, delivery barcodes and takes proof-of-delivery photos." } },
+      "de" : { "stringUnit" : { "state" : "translated", "value" : "Die Kamera scannt deinen Anmeldecode und Liefer-Barcodes und nimmt Fotos als Zustellnachweis auf." } } } },
+    "NSPhotoLibraryUsageDescription" : { "localizations" : {
+      "en" : { "stringUnit" : { "state" : "translated", "value" : "To read a login code or barcode from a photo." } },
+      "de" : { "stringUnit" : { "state" : "translated", "value" : "Zum Einlesen eines Anmeldecodes oder Barcodes aus einem Foto." } } } },
+    "NSLocationWhenInUseUsageDescription" : { "localizations" : {
+      "en" : { "stringUnit" : { "state" : "translated", "value" : "Your location is used for navigation and to show customers when you arrive." } },
+      "de" : { "stringUnit" : { "state" : "translated", "value" : "Dein Standort wird für die Navigation genutzt und zeigt Kunden, wann du ankommst." } } } },
+    "NSLocationAlwaysAndWhenInUseUsageDescription" : { "localizations" : {
+      "en" : { "stringUnit" : { "state" : "translated", "value" : "Navigation and live tracking for customers continue while the screen is locked." } },
+      "de" : { "stringUnit" : { "state" : "translated", "value" : "Navigation und Live-Tracking für Kunden laufen auch bei gesperrtem Bildschirm weiter." } } } },
+    "NSLocalNetworkUsageDescription" : { "localizations" : {
+      "en" : { "stringUnit" : { "state" : "translated", "value" : "The app connects to a delivery server in your local network." } },
+      "de" : { "stringUnit" : { "state" : "translated", "value" : "Die App verbindet sich mit einem Liefer-Server in deinem lokalen Netzwerk." } } } }
+  },
+  "version" : "1.0"
+}

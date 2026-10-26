@@ -20,7 +20,7 @@ can also be typed (`ABCD-EFGH-JKMN-PQRS-TVWX`; dashes, spaces, I/L→1 and O→0
 | `POST /api/app/login` `{code, device_name?, platform?: "ios"\|"android"}` | → `{token, user}` |
 | `POST /api/app/logout` | revokes this device |
 | `GET /api/app/me` | current user |
-| `GET /api/app/config` | branding (`brand.name/color/logo_url`), `map {provider, style_url, attribution}`, `notify_lead_stops`, `outcomes[]` with `reasons[]` and required proofs |
+| `GET /api/app/config` | branding (`brand.name/color/logo_url`), `map {provider, style_url, attribution}`, `notify_lead_stops`, `scan_accept`, `outcomes[]` with `reasons[]` and required proofs |
 | `GET /api/app/tours` | the driver's tours (released/running from yesterday on, finished of the last 3 days) |
 | `GET /api/app/tours/:id` | offline package: `tour` (start, end, mode, `route.geometry` `[lon,lat][]`, legs, `computed_at`) and `stops[]` in driving order with customer, address, coordinates, delivery notes, time window, `tracking_url`, `orders[]` with `delivery_ean13` and `items[]` |
 | `POST /api/app/tours/:id/start` | starts the tour (sends day-start / approaching notifications); idempotent |
