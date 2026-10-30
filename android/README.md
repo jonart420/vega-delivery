@@ -7,9 +7,8 @@ platform `LocationManager`, scanning with ZXing) – suitable for F-Droid.
 
 Basic UI – the visual design follows later. Same server API as the iOS app (`docs/APP-API.md`).
 
-> **Status:** written without a local Android SDK and therefore **not compiled yet**. The Ferrostar
-> API calls were checked against the 0.58.0 sources. Please build once in Android Studio and report
-> or fix compile errors.
+> **Status:** `gradle assembleDebug` (Gradle 8.14) builds in CI (`.github/workflows/android.yml`), but the app has
+> not been tested on a device or emulator yet. Please report problems you find.
 
 ## Features
 
