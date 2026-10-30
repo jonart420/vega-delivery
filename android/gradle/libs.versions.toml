@@ -2,11 +2,12 @@
 agp = "8.13.2"
 kotlin = "2.3.20"
 ksp = "2.3.10"
-composeBom = "2026.08.00"
+# Same Compose BOM as Ferrostar 0.58; newer BOMs need AGP 9.1 and compileSdk 37
+composeBom = "2026.02.01"
 activityCompose = "1.13.0"
 coreKtx = "1.17.0"
 lifecycle = "2.10.0"
-navigation = "2.10.0"
+navigation = "2.9.8"
 serialization = "1.11.0"
 okhttp = "5.3.2"
 room = "2.8.4"
@@ -15,6 +16,7 @@ camera = "1.6.1"
 zxing = "3.5.4"
 ferrostar = "0.58.0"
 junit = "4.13.2"
+desugar = "2.1.5"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
@@ -42,6 +44,7 @@ ferrostar-core = { module = "com.stadiamaps.ferrostar:core", version.ref = "ferr
 ferrostar-ui-maplibre = { module = "com.stadiamaps.ferrostar:ui-maplibre", version.ref = "ferrostar" }
 ferrostar-ui-compose = { module = "com.stadiamaps.ferrostar:ui-compose", version.ref = "ferrostar" }
 junit = { module = "junit:junit", version.ref = "junit" }
+desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

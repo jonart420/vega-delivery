@@ -33,6 +33,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        // Required by Ferrostar (java.time on older Android versions)
+        isCoreLibraryDesugaringEnabled = true
     }
     buildFeatures {
         compose = true
@@ -73,5 +75,6 @@ dependencies {
     implementation(libs.ferrostar.core)
     implementation(libs.ferrostar.ui.maplibre)
     implementation(libs.ferrostar.ui.compose)
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
     testImplementation(libs.junit)
 }

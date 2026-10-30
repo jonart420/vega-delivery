@@ -22,11 +22,10 @@ jobs:
       - run: brew install xcodegen
       - run: xcodegen
       # Simulator build without code signing – checks that the app compiles.
+      # -quiet prints only warnings and errors, so compiler errors stay visible in the log.
       - run: >
-          xcodebuild build
+          xcodebuild build -quiet
           -project VegaDelivery.xcodeproj
           -scheme VegaDelivery
           -destination "generic/platform=iOS Simulator"
           CODE_SIGNING_ALLOWED=NO
-          | tail -n 200
-          ; exit ${PIPESTATUS[0]}
