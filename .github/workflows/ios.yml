@@ -28,4 +28,5 @@ jobs:
           -project VegaDelivery.xcodeproj
           -scheme VegaDelivery
           -destination "generic/platform=iOS Simulator"
+          -skipMacroValidation -skipPackagePluginValidation
           CODE_SIGNING_ALLOWED=NO
