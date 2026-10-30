@@ -9,8 +9,7 @@ Preview locally:
 python3 -m http.server 8765 --directory website
 ```
 
-Publish with GitHub Pages: Settings → Pages → "Deploy from a branch", branch `main`, folder `/website`
-is not offered by GitHub, so either move the folder to `docs/` or use a Pages workflow that uploads
-`website/` as the artifact.
+Published with GitHub Pages by `.github/workflows/pages.yml` on every push to `main` that changes
+`website/` (repository Settings → Pages → Source: GitHub Actions).
 
 Screenshots were taken from a demo installation (`backend/scripts/seed-demo.mjs`) with fictional data.
